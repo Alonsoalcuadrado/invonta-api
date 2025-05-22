@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import { errorHandler } from './middlewares/errorHandler';
+import { apiLimiter } from './middlewares/rateLimiter';
 import authRoutes from './routes/auth';
 import userRoutes from './routes/user';
 
@@ -14,6 +15,9 @@ app.use(cors({
   origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
   credentials: true,
 }));
+
+// Rate limiting
+app.use(apiLimiter);
 
 // Body parser
 app.use(express.json());
