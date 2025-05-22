@@ -1,14 +1,10 @@
 import { Router } from 'express';
-import { register, login } from '../controllers/auth';
+import { register, login, refreshToken } from '../controllers/auth';
 
 const router = Router();
 
-router.post('/register', async (req, res) => {
-  await register(req, res);
-});
-
-router.post('/login', async (req, res) => {
-  await login(req, res);
-});
+router.post('/register', (req, res, next) => register(req, res, next));
+router.post('/login', (req, res, next) => login(req, res, next));
+router.post('/refresh-token', (req, res, next) => refreshToken(req, res, next));
 
 export default router; 

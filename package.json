@@ -15,15 +15,24 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
-  "keywords": ["saas", "billing", "api", "typescript"],
+  "keywords": [
+    "saas",
+    "billing",
+    "api",
+    "typescript"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^6.8.2",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/helmet": "^4.0.0",
     "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
     "zod": "^3.25.20"
   },
