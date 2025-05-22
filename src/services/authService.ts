@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { AppError } from '../utils/AppError';
 import { logInfo } from '../utils/logger';
@@ -63,7 +62,7 @@ export const verifyRefreshToken = async (token: string) => {
     }
 
     return decoded;
-  } catch (error) {
+  } catch {
     throw new AppError('Invalid refresh token', 401);
   }
 };

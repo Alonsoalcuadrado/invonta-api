@@ -9,8 +9,8 @@ export interface User {
 }
 
 export interface AuthenticatedRequest extends Request {
-  context?: {
-    userId: string;
+  user?: {
+    id: string;
     tenantId: string;
   };
 }

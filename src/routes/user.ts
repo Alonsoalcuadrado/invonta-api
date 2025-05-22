@@ -1,17 +1,9 @@
 import { Router } from 'express';
-import { getMe } from '../controllers/user';
-import { authenticate } from '../middlewares/auth';
-import { AuthenticatedRequest } from '../types';
+import { getProfile } from '../controllers/user';
+import { protect } from '../middlewares/auth';
 
 const router = Router();
 
-router.get('/me', 
-  async (req, res, next) => {
-    await authenticate(req as AuthenticatedRequest, res, next);
-  },
-  async (req, res) => {
-    await getMe(req as AuthenticatedRequest, res);
-  }
-);
+router.get('/me', protect, getProfile);
 
 export default router; 

@@ -4,11 +4,11 @@ import { logError } from '../utils/logger';
 
 export const errorHandler = (
   err: Error,
-  req: Request,
+  _req: Request,
   res: Response,
-  next: NextFunction
+  _next: NextFunction
 ): void => {
-  logError(err);
+  logError(err.message, err);
 
   if (err instanceof AppError) {
     res.status(err.statusCode).json({

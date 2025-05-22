@@ -40,7 +40,8 @@ export const register = async (req: Request, res: Response, next: NextFunction) 
     const { accessToken, refreshToken } = generateTokens(user.id, tenant.id);
     await saveRefreshToken(user.id, refreshToken);
 
-    const { password: _, ...userWithoutPassword } = user;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: _password, ...userWithoutPassword } = user;
 
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
@@ -82,7 +83,8 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     await saveRefreshToken(user.id, refreshToken);
     await updateLastLogin(user.id);
 
-    const { password: _, ...userWithoutPassword } = user;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password: _password, ...userWithoutPassword } = user;
 
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,

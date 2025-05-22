@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
@@ -46,7 +46,9 @@ app.use((req: Request, res: Response) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
+  // eslint-disable-next-line no-console
   console.log(`Server is running on port ${PORT}`);
+  // eslint-disable-next-line no-console
   console.log(`API Documentation available at http://localhost:${PORT}/api-docs`);
 });
 

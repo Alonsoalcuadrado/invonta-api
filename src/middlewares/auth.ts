@@ -10,18 +10,14 @@ interface JwtPayload {
   tenantId: string;
 }
 
-declare global {
-  namespace Express {
-    interface Request {
-      user?: {
-        id: string;
-        tenantId: string;
-      };
-    }
-  }
+interface AuthenticatedRequest extends Request {
+  user?: {
+    id: string;
+    tenantId: string;
+  };
 }
 
-export const protect = async (req: Request, res: Response, next: NextFunction) => {
+export const protect = async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
   try {
     // 1) Get token from header
     const authHeader = req.headers.authorization;
